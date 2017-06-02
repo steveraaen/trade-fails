@@ -4,17 +4,17 @@ import React from 'react';
   render() {
     return (
      <div style={{textAlign: 'center'}}>
-        <form className="form-inline">
+        <form className="form-inline" >
 		  <div className="form-group">
-		    <input type="email" className="form-control" id="email"></input>
+		    <input style={{marginRight: 20}} type="text" placeholder="Enter Symbol" className="form-control" id="email"></input>
 		  </div>
 		  <div className="form-group">
-		    <input type="password" className="form-control" id="pwd"></input>
+		    <input style={{marginRight: 20}} type="range" className="form-control" id="pwd"></input>
 		  </div>
 		  <div className="checkbox">
-		    <input type="checkbox"></input>
+		    <input style={{marginRight: 20}} type="checkbox"></input>
 		  </div>
-		  <button type="submit" className="btn btn-default">Submit</button>
+		  <button style={{marginRight: 20}} type="submit" className="btn btn-default">Submit</button>
 		</form>
       </div>);
   }
