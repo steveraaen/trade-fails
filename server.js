@@ -1,6 +1,7 @@
 var express = require('express');
-/*var mongoose = require('mongoose');*/
+var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var pwds = require('./pwds');
 
 var app = express();
 var PORT = 3000;
@@ -10,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-/*mongoose.connect(pwds.mong);
+mongoose.connect(pwds.mong);
 var db = mongoose.connection;
 
 
@@ -20,7 +21,7 @@ db.on("error", function(error) {
 
 db.once("open", function() {
   console.log("Mongoose connection successful.");
-});*/
+});
 
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "view.html"));
