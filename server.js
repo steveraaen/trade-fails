@@ -2,18 +2,17 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var pwds = require('./pwds');
-var path = require('path');
-var helpers = require('./utils/helpers.js');
 var Fail = require('./models/Fails.js');
 
 var app = express();
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
+app.use(express.static("./client"));
 mongoose.connect(pwds.mong);
 mongoose.Promise = Promise;
 
@@ -25,21 +24,19 @@ db.on("error", function(error) {
 db.once("open", function() {
     console.log("Mongoose connection successful.");
 });
-
 app.get("/", function(req, res) {
-
-    res.send('hello');
+  res.sendFile(__dirname + "/client/index.html");
 });
+
 app.get("/fails", function(req, res) {
-
-  Fail.find({ "SYMBOL": "AAPL"}, function(error, doc) {
-
+  Fail.find({ "SYMBOL": "AAPL" }, function(error, doc) {
     if (error) {
       console.log(error);
     }
 
     else {
-      res.json(doc);
+
+      res.send(doc);
     }
   });
 });

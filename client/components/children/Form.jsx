@@ -1,39 +1,77 @@
-/*import React from 'react';
-var helper = require('../../../utils/helpers.js');
+import React from "react";
+import helper from "../../../utils/helpers.js";
 
- class Form extends React.Component {
- 	constructor(props) {
- 		super(props);
+class Form extends React.Component {
+  constructor(props) {
+    super(props);
 
- 		this.handleSubmit = this.handleSubmit.bind(this);
- 	}
+    this.state = {
+      term: ""
+    };
 
- 	 handleSubmit(event) {
-	    event.preventDefault();
-	    console.log("CLICK");
-	    console.log(this.ticker);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
 
-  }		
+  handleChange(event) {
+    var newState = {};
+    newState[event.target.id] = event.target.value;
+    this.setState(newState);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    console.log("CLICK");
+    console.log(this.state.term);
+    this.props=(this.state.term);
+    this.setState({ term: this.state.term });
+    helper.getFails({"SYMBOL": this.state.term});
+  }
 
   render() {
+
     return (
-     <div style={{textAlign: 'center'}}>
-        <form className="form-inline" >
-		  <div className="form-group">
-		    <input style={{marginRight: 20}} onSubmit={this.handleSubmit} type="text" placeholder="Enter Symbol" className="form-control" id="ticker"></input>
-		  </div>
-		  <div className="form-group">
-		    <input style={{marginRight: 20}} type="range" className="form-control" id="pwd"></input>
-		  </div>
-		  <div className="checkbox">
-		    <input style={{marginRight: 20}} type="checkbox"></input>
-		  </div>
-		  <button style={{marginRight: 20}}  type="submit" className="btn btn-default">Submit</button>
-		</form>
-      </div>);
+
+      <div className="panel panel-default">
+        <div className="panel-heading">
+          <h3 className="panel-title text-center">Query</h3>
+        </div>
+        <div className="panel-body text-center">
+
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              <h4 className="">
+                <strong>Location</strong>
+              </h4>
+
+              {/*
+                Note how each of the form elements has an id that matches the state.
+                This is not necessary but it is convenient.
+                Also note how each has an onChange event associated with our handleChange event.
+              */}
+              <input
+                type="text"
+                className="form-control text-center"
+                id="term"
+                value={this.state.term}
+                onChange={this.handleChange}
+                
+              />
+              <br />
+
+              <button
+                type="submit"
+                className="btn btn-primary"
+              >
+                Submit
+              </button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    );
   }
 }
 
 export default Form;
-
-*/
