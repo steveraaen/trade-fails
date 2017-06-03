@@ -1,15 +1,24 @@
 import React from 'react';
-import Form from './children/Form.jsx';
+import Button from "./children/Button.jsx";
+import Results from "./children/Results.jsx";
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
     <div>
-     <div style={{textAlign: 'center'}}>
-        <h1>Hello World</h1>
-      </div>
-      	<Form />
-      </div>
-      );
+      <div>
+       <div style={{textAlign: 'center'}}>
+          <h1>Failed Trades</h1>
+        </div>
+        <div>
+        	<Button  />
+        </div>
+    </div> 
+    </div> 
+    );
   }
 }
+

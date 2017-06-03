@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var pwds = require('./pwds');
 var path = require('path');
-var FailTrade = require('./models/Fails.js');
+var helpers = require('./utils/helpers.js');
+var Fail = require('./models/Fails.js');
 
 var app = express();
 var PORT = 3000;
@@ -26,19 +27,18 @@ db.once("open", function() {
 });
 
 app.get("/", function(req, res) {
-    console.log(__dirname)
+
     res.send('hello');
 });
 app.get("/fails", function(req, res) {
 
-  FailTrade.find({}, function(error, doc) {
+  Fail.find({ "SYMBOL": "AAPL"}, function(error, doc) {
 
     if (error) {
       console.log(error);
     }
 
     else {
-    	console.log(req.body)
       res.json(doc);
     }
   });
@@ -47,3 +47,4 @@ app.get("/fails", function(req, res) {
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
 });
+module.exports = app;

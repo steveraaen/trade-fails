@@ -5,6 +5,7 @@
   "repository": "https://github.com/steveraaen/wp-babel.git",
   "author": "steveraaen <sraaen@gmail.com>",
   "license": "MIT",
+  "proxy": "http://localhost:3000/",
   "scripts": {
     "start": "webpack-dev-server"
   },
