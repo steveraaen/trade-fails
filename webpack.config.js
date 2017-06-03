@@ -1,25 +1,21 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: './public/index.html',
-  filename: 'index.html',
-  inject: 'body'
-})
-
 module.exports = {
-  entry: './client/index.js',
+
+  entry: "./app/app.js",
   output: {
- /*   path: path.resolve('client/'),*/
-    filename: 'bundle.js'
+    filename: "public/bundle.js"
   },
+  // This section desribes the transformations we will perform
   module: {
     loaders: [
-      { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ },
-      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ }
+      {
+        test: /\.jsx?$/,
+        include: /app/,
+        loader: "babel",
+        query: {
+          presets: ["react", "es2015"]
+        }
+      }
     ]
   },
-  devServer: {
-  filename: path.join("server.js")
-},
-  plugins: [HtmlWebpackPluginConfig]
-}
+  devtool: "eval-source-map"
+};

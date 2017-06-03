@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-app.use(express.static("./client"));
+app.use(express.static("./public"));
 mongoose.connect(pwds.mong);
 mongoose.Promise = Promise;
 
@@ -25,7 +25,7 @@ db.once("open", function() {
     console.log("Mongoose connection successful.");
 });
 app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/client/index.html");
+  res.sendFile(__dirname + "/public/index.html");
 });
 
 app.get("/fails", function(req, res) {
