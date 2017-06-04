@@ -1,11 +1,11 @@
 import React from "react";
-import helper from "../../../utils/helpers.js";
+/*import helper from "../../../utils/helpers.js";*/
 
 class Form extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      SYMBOL: ""
+      term: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,41 +22,28 @@ class Form extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log("CLICK");
-    helper.getFails(this.state.SYMBOL);
-    this.props=(this.state.SYMBOL);
-    this.setState({ SYMBOL: this.state.SYMBOL });
-    console.log(this.state.SYMBOL);
-
+    console.log(this.state.term);
+    this.props.setTerm(this.state.term);
+//    this.setState({ term: "" });
   }
-
   render() {
-
     return (
-
       <div className="panel panel-default">
         <div className="panel-heading">
           <h3 className="panel-title text-center">Query</h3>
         </div>
         <div className="panel-body text-center">
-
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <h4 className="">
-                <strong>Location</strong>
-              </h4>
-
-              {/*
-                Note how each of the form elements has an id that matches the state.
-                This is not necessary but it is convenient.
-                Also note how each has an onChange event associated with our handleChange event.
-              */}
+                <strong>Location</strong></h4>
               <input
                 type="text"
                 className="form-control text-center"
-                id="SYMBOL"
-                value={this.state.SYMBOL}
-                onChange={this.handleChange}
-                
+                id="term"
+                name="term"
+                value={this.state.term}
+                onChange={this.handleChange}               
               />
               <br />
 

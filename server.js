@@ -24,22 +24,19 @@ db.on("error", function(error) {
 db.once("open", function() {
     console.log("Mongoose connection successful.");
 });
+
 app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/public/index.html");
+    res.sendFile(__dirname + "/public/index.html");
 });
 
-app.get("/fails", function(req, res) {
-console.log(req.body.SYMBOL)
-  Fail.find({"SYMBOL": req.body.SYMBOL}, function(error, doc) {
-    if (error) {
-      console.log(error);
-    }
-
-    else {
-      console.log('........' + req.body.SYMBOL)
-      res.send(doc);
-    }
-  });
+app.get("/fails/:term", function(req, res) {
+    Fail.find({ "SYMBOL": req.params.term }, function(error, doc) {
+        if (error) {
+            console.log(error);
+        } else {
+            res.send(doc);
+        }
+    });
 });
 
 app.listen(PORT, function() {

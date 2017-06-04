@@ -1,20 +1,23 @@
-var axios = require('axios');
+/*var axios = require('axios');
+
 
 
 var helper = {
 
 
-    getFails: function(term) {    
-        axios.get('/fails')
-            .then(function(response) {
-            		console.log(term)
-                console.log(response);
-            })
-            .catch(function(error) {
-                console.log(error);
+    getFails: function() {
+        axios.get("/fails", function(req, res) {
+            Fail.find({}, function(error, doc) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    res.send(doc);
+                }
             });
-	    }
+        });
+    }
 
-	}
+}
 
 module.exports = helper;
+*/
