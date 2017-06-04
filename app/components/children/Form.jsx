@@ -4,13 +4,13 @@ import helper from "../../../utils/helpers.js";
 class Form extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      term: ""
+      SYMBOL: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   handleChange(event) {
@@ -22,10 +22,11 @@ class Form extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log("CLICK");
-    console.log(this.state.term);
-    this.props=(this.state.term);
-    this.setState({ term: this.state.term });
-    helper.getFails({"SYMBOL": this.state.term});
+    helper.getFails(this.state.SYMBOL);
+    this.props=(this.state.SYMBOL);
+    this.setState({ SYMBOL: this.state.SYMBOL });
+    console.log(this.state.SYMBOL);
+
   }
 
   render() {
@@ -52,8 +53,8 @@ class Form extends React.Component {
               <input
                 type="text"
                 className="form-control text-center"
-                id="term"
-                value={this.state.term}
+                id="SYMBOL"
+                value={this.state.SYMBOL}
                 onChange={this.handleChange}
                 
               />

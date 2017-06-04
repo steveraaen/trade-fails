@@ -29,13 +29,14 @@ app.get("/", function(req, res) {
 });
 
 app.get("/fails", function(req, res) {
-  Fail.find({ "SYMBOL": "AAPL" }, function(error, doc) {
+console.log(req.body.SYMBOL)
+  Fail.find({"SYMBOL": req.body.SYMBOL}, function(error, doc) {
     if (error) {
       console.log(error);
     }
 
     else {
-
+      console.log('........' + req.body.SYMBOL)
       res.send(doc);
     }
   });
