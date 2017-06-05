@@ -2,7 +2,7 @@ import React from "react";
 /*import helper from "../../../utils/helpers.js";*/
 
 class Form extends React.Component {
-  constructor(props) {
+  /*constructor(props) {
     super(props);
     this.state = {
       term: ""
@@ -23,7 +23,7 @@ class Form extends React.Component {
     event.preventDefault();
     console.log("CLICK");
     console.log(this.state.term);
-    this.props.setTerm(this.state.term);
+    this.props.setTerm(this.state.term);*/
 //    this.setState({ term: "" });
   }
   render() {

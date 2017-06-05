@@ -6,13 +6,13 @@ import Results from "./children/Results.jsx";
 export default class Main extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       term: "",
       fails: {}
     }
         this.setTerm = this.setTerm.bind(this);
   }
+
    componentDidUpdate(prevProps, prevState) {
     if (prevState.searchTerm !== this.state.searchTerm) {
       console.log("UPDATED");
@@ -25,7 +25,7 @@ export default class Main extends React.Component {
       });
     }
   }
-  
+   
   setTerm(term) {
     this.setState({
       term: term
