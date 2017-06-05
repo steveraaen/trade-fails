@@ -16,7 +16,7 @@ export default class Main extends React.Component {
    componentDidUpdate(prevProps, prevState) {
     if (prevState.searchTerm !== this.state.searchTerm) {
       console.log("UPDATED");
-      helpers.getFails(this.state.searchTerm).then((data) => {
+      helpers.getFails().then((data) => {
         if (data !== this.state.results) {
           console.log(data);
 
