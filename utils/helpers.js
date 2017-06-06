@@ -1,4 +1,5 @@
-/*var axios = require('axios');
+var axios = require('axios');
+var Fail = require('../models/Fails.js');
 
 
 
@@ -6,18 +7,9 @@ var helper = {
 
 
     getFails: function() {
-        axios.get("/fails", function(req, res) {
-            Fail.find({}, function(error, doc) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    res.send(doc);
-                }
-            });
-        });
+      return  axios.get("/term", { SYMBOL: this.state.term})
     }
 
 }
 
 module.exports = helper;
-*/

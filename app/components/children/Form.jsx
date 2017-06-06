@@ -1,8 +1,8 @@
 import React from "react";
-/*import helper from "../../../utils/helpers.js";*/
+import helper from "../../../utils/helpers.js";
 
 class Form extends React.Component {
-  /*constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       term: ""
@@ -18,14 +18,18 @@ class Form extends React.Component {
     newState[event.target.id] = event.target.value;
     this.setState(newState);
   }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    console.log("CLICK");
-    console.log(this.state.term);
-    this.props.setTerm(this.state.term);*/
-//    this.setState({ term: "" });
+  handleSubmit(e) {
+    e.preventDefault();
+        helpers.getFails().then(function(response) {
+      console.log(response);
+      if (response !== this.state.history) {
+        console.log("Fails", response.data);
+        this.setState({ fails: response.data });
+      }
+    }.bind(this));
+    console.log(this.state)
   }
+
   render() {
     return (
       <div className="panel panel-default">

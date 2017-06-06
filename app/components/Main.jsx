@@ -13,19 +13,7 @@ export default class Main extends React.Component {
         this.setTerm = this.setTerm.bind(this);
   }
 
-   componentDidUpdate(prevProps, prevState) {
-    if (prevState.searchTerm !== this.state.searchTerm) {
-      console.log("UPDATED");
-      helpers.getFails().then((data) => {
-        if (data !== this.state.results) {
-          console.log(data);
 
-          this.setState({ results: data });
-        }
-      });
-    }
-  }
-   
   setTerm(term) {
     this.setState({
       term: term
