@@ -30,7 +30,7 @@ app.get("/", function(req, res) {
 });
 
 app.get("/term", function(req, res) {
-    helper.getFails()
+
     Fail.find({}, function(error, doc) {
         if (error) {
             console.log(error);

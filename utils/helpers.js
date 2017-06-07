@@ -1,7 +1,4 @@
 var axios = require('axios');
-var Fail = require('../models/Fails.js');
-
-
 
 var helper = {
 

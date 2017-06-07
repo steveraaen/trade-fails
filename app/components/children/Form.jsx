@@ -20,13 +20,7 @@ class Form extends React.Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-        helpers.getFails().then(function(response) {
-      console.log(response);
-      if (response !== this.state.history) {
-        console.log("Fails", response.data);
-        this.setState({ fails: response.data });
-      }
-    }.bind(this));
+    setState(this.state)
     console.log(this.state)
   }
 
