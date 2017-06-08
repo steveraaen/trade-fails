@@ -13,13 +13,12 @@ class Main extends React.Component {
         this.setTerm = this.setTerm.bind(this);
   }
 componentDidUpdate(prevProps, prevState) {
-
 if (prevState.searchTerm !== this.state.term) {
-  console.log("UPDATED");
+  console.log("UPDATED" + this.state.term);
 
   helper.getFails(this.state.term).then((data) => {
     if (data !== this.state.results) {
-      console.log(data);
+      console.log('line 21  :', this.state.results);
 
       this.setState({ results: data });
     }
@@ -41,7 +40,7 @@ if (prevState.searchTerm !== this.state.term) {
           <h1>Failed Trades</h1>
         </div>
         <div>
-        	<Form setTerm={this.setTerm} />
+        	<Form setTerm={this.setTerm} props={this.props} />
         </div>
         <div>
           <Results cs={this.props}  />

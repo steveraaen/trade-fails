@@ -12,4 +12,5 @@ var FailSchema = new Schema({
 
 var Fail = mongoose.model("Fail", FailSchema);
 
+
 module.exports = Fail

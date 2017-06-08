@@ -9,13 +9,13 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 app.use(express.static("./public"));
 mongoose.connect(pwds.mong);
-mongoose.Promise = Promise;
+
 
 var db = mongoose.connection;
 
@@ -29,16 +29,17 @@ app.get("/", function(req, res) {
     res.sendFile(__dirname + "/public/index.html");
 });
 
-app.get("/term", function(req, res) {
-    var ticker = req.body.term;
-    Fail.find({}, function(error, doc) {
-        if (error) {
-            console.log(error);
-        } else {
-            console.log(doc)
-            res.send(doc);
-        }
-    }).limit(10);
+app.get("/term/:symbol", function(req, res) {
+
+console.log('server line 35  : ' + req.body)
+  Fail.find({"SYMBOL": req.body}, function(error, doc) {
+    if (error) {
+      console.log(error);
+    }
+    else {
+      res.json(doc);
+    }
+  });
 });
 
 app.listen(PORT, function() {

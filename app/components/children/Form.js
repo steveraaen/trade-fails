@@ -14,6 +14,10 @@ class Form extends React.Component {
 
     this.setState({term: event.target.value });
 
+    var newState = {};
+    newState[event.target.id] = event.target.value;
+    this.setState(newState); 
+     console.log(this.state)
   }
 
   handleSubmit(event) {
@@ -21,12 +25,13 @@ class Form extends React.Component {
     console.log("CLICK");
     console.log(this.state.term);
     this.props.setTerm(this.state.term);
+    console.log(this.props);
     this.setState({ term: "" });
   }
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form action="/term" onSubmit={this.handleSubmit}>
         <label>
           Name:
           <input id="term" type="textarea" value={this.state.value} onChange={this.handleChange} />
