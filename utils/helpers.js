@@ -4,7 +4,7 @@ var helper = {
 
 
     getFails: function() {
-      return  axios.get("/term", { SYMBOL: this.state.term})
+      return  axios.get("/term" )
     }
 
 }

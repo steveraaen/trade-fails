@@ -30,7 +30,7 @@ app.get("/", function(req, res) {
 });
 
 app.get("/term", function(req, res) {
-
+    var ticker = req.body.term;
     Fail.find({}, function(error, doc) {
         if (error) {
             console.log(error);
@@ -38,7 +38,7 @@ app.get("/term", function(req, res) {
             console.log(doc)
             res.send(doc);
         }
-    });
+    }).limit(10);
 });
 
 app.listen(PORT, function() {
