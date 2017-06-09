@@ -26,17 +26,27 @@ db.once("open", function() {
     console.log("Mongoose connection successful.");
 
 app.get("/", function(req, res) {
+      Fail.find({"SYMBOL": "TWLO"}, function(error, doc) {
+        if (error) {
+          console.log(error);
+        }
+        else {
+          console.log(doc)
+          res.json(doc);
+        }
+      });
     res.sendFile(__dirname + "/public/index.html");
 });
 
-app.get("/term/:symbol", function(req, res) {
-
-console.log('server line 35  : ' + req.body)
-  Fail.find({"SYMBOL": req.body}, function(error, doc) {
+app.get("/term", function(req, res) {
+var symbol = req.body.symbol;
+console.log('server line 35  : ' + symbol)
+  Fail.find({"SYMBOL": "TWLO"}, function(error, doc) {
     if (error) {
       console.log(error);
     }
     else {
+      console.log(doc)
       res.json(doc);
     }
   });

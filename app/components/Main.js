@@ -6,24 +6,26 @@ import helper from'../../utils/helpers.js';
 class Main extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       term: "",
       results: {}
     };
+
         this.setTerm = this.setTerm.bind(this);
   }
-componentDidUpdate(prevProps, prevState) {
-if (prevState.searchTerm !== this.state.term) {
-  console.log("UPDATED" + this.state.term);
 
-  helper.getFails(this.state.term).then((data) => {
-    if (data !== this.state.results) {
-      console.log('line 21  :', this.state.results);
-
+componentDidMount() {
+    helper.getFails().then((data) => {  
       this.setState({ results: data });
-    }
+      console.log(data)
+    
   });
-}
+}  
+componentDidUpdate(prevProps, prevState) {
+
+
+
 }
 
   setTerm(term) {
@@ -40,10 +42,10 @@ if (prevState.searchTerm !== this.state.term) {
           <h1>Failed Trades</h1>
         </div>
         <div>
-        	<Form setTerm={this.setTerm} props={this.props} />
+        	<Form setTerm={this.setTerm} term={this.state.term} />
         </div>
         <div>
-          <Results cs={this.props}  />
+          <Results fails={this.state.results}  />
         </div>
     </div> 
     </div> 
