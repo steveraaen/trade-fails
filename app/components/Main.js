@@ -19,6 +19,7 @@ componentDidMount() {
     helper.getFails().then((data) => {  
       this.setState({ results: data });
       console.log(data)
+      console.log(this.state.results.data)
     
   });
 }  
@@ -45,7 +46,7 @@ componentDidUpdate(prevProps, prevState) {
         	<Form setTerm={this.setTerm} term={this.state.term} />
         </div>
         <div>
-          <Results fails={this.state.results}  />
+          <Results results={this.state.results}  />
         </div>
     </div> 
     </div> 

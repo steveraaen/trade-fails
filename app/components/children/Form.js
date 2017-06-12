@@ -4,7 +4,6 @@ import helper from "../../../utils/helpers.js";
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    console.log(props)
     this.state = {};
 
     this.handleChange = this.handleChange.bind(this);
@@ -13,9 +12,9 @@ class Form extends React.Component {
 
   handleChange(event) {
     this.setState({term: event.target.value });
-/*    var newState = {};
+    var newState = {};
     newState[event.target.id] = event.target.value;
-    this.setState(newState);*/
+    this.setState(newState);
   }
   
   handleSubmit(event) {
