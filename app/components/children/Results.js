@@ -4,17 +4,23 @@ class Results extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      results: []
+    }
+  }
+
+  componentDidUpdate(){
+      this.state = {
+      results: this.props.results
+    }
+   
+
 
   }
 
   render() {
-    this.state = {
-      results: this.props.results
-    }
 
-    var fails = (10);
-    fails = this.state.results.data;
-    console.log(fails)
+
     return (
 
       <div className="panel panel-default">
