@@ -1,6 +1,6 @@
 import React from 'react';
 import Form from "./children/Form.js";
-import Results from "./children/Results.js";
+import Resultsa from "./children/Resultsa.js";
 import helper from'../../utils/helpers.js';
 
 class Main extends React.Component {
@@ -46,7 +46,7 @@ componentDidUpdate(prevProps, prevState) {
         	<Form setTerm={this.setTerm} term={this.state.term} />
         </div>
         <div>
-          <Results results={this.state.results}  />
+          <Resultsa results={this.state.results}  />
         </div>
     </div> 
     </div> 
