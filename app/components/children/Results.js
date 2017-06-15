@@ -3,29 +3,18 @@ import React from "react";
 class Results extends React.Component {
 
   constructor(props) {
-    super(props);
-    this.state = {
-      results: []
-    }
-  }
- 
-  componentDidUpdate(){
-      this.state = {
-      results: this.props.results
-    }
-    
-    var fails = this.props.results.data
-    var failsArray = []
-    console.log(fails.length)
-    for (let i = 0; i < fails.length; i++) {
-      console.log(fails[i])
-      failsArray.push(fails[i])
-    }
-    
+      super(props);
+
   }
 
+  componentDidUpdate() {
+
+ 
+  }
+
+
   render() {
-    console.log(failsArray)
+    
     return (
 
       <div className="panel panel-default">
@@ -34,7 +23,14 @@ class Results extends React.Component {
           <h3 className="panel-title text-center">Results</h3>
         </div>
         <div className="panel-body text-center">
-
+          <ul>
+            
+            { JSON.stringify(this.props.results.data).map(function(search, i) {
+            return (
+              <p key={i}>{search._id} - {search.SYMBOL}</p>
+            );
+          })}
+          </ul>
 
 
         </div>
