@@ -23,12 +23,9 @@ componentDidMount() {
     
   });
 }  
-componentDidUpdate(prevProps, prevState) {
+/*componentDidUpdate(prevProps, prevState) {
 
-
-
-}
-
+}*/
   setTerm(term) {
     this.setState({
       term: term
